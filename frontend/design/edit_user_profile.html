@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Details / Edit User</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4A90E2",
+                        "background-light": "#F4F7FA",
+                        "background-dark": "#101922",
+                        "success": "#2ECC71",
+                        "warning": "#F39C12",
+                        "danger": "#E74C3C"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.75rem",
+                        "xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#1E293B] dark:text-gray-200">
+<div class="flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="w-64 flex-shrink-0 bg-[#0c141c]">
+<div class="flex h-full flex-col justify-between p-4">
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-3 px-2">
+<div class="bg-primary rounded-lg p-2 flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-size: 24px;">shield_person</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-white text-base font-bold leading-normal">Admin Panel</h1>
+<p class="text-gray-400 text-sm font-normal leading-normal">Super Admin</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-300 hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-gray-300" style="font-size: 24px;">dashboard</span>
+<p class="text-sm font-medium leading-normal">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/20 text-primary" href="#">
+<span class="material-symbols-outlined fill text-primary" style="font-size: 24px;">group</span>
+<p class="text-sm font-medium leading-normal">Users</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-300 hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-gray-300" style="font-size: 24px;">admin_panel_settings</span>
+<p class="text-sm font-medium leading-normal">Roles</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-300 hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-gray-300" style="font-size: 24px;">settings</span>
+<p class="text-sm font-medium leading-normal">Settings</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-300 hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-gray-300" style="font-size: 24px;">bar_chart</span>
+<p class="text-sm font-medium leading-normal">Reports</p>
+</a>
+</nav>
+</div>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-300 hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-gray-300" style="font-size: 24px;">help</span>
+<p class="text-sm font-medium leading-normal">Help</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-300 hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-gray-300" style="font-size: 24px;">logout</span>
+<p class="text-sm font-medium leading-normal">Logout</p>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 p-8">
+<div class="max-w-7xl mx-auto">
+<!-- Breadcrumbs -->
+<div class="flex flex-wrap gap-2 mb-6">
+<a class="text-gray-500 dark:text-gray-400 text-sm font-medium leading-normal hover:text-primary dark:hover:text-primary" href="#">Admin</a>
+<span class="text-gray-500 dark:text-gray-400 text-sm font-medium leading-normal">/</span>
+<a class="text-gray-500 dark:text-gray-400 text-sm font-medium leading-normal hover:text-primary dark:hover:text-primary" href="#">Users</a>
+<span class="text-gray-500 dark:text-gray-400 text-sm font-medium leading-normal">/</span>
+<span class="text-gray-900 dark:text-white text-sm font-medium leading-normal">Jane Doe</span>
+</div>
+<!-- Page Heading & Actions -->
+<div class="flex flex-wrap justify-between items-center gap-4 mb-8">
+<div class="flex min-w-72 flex-col gap-1">
+<p class="text-gray-900 dark:text-white text-3xl font-bold leading-tight tracking-tight">Jane Doe</p>
+<p class="text-gray-500 dark:text-gray-400 text-base font-normal leading-normal">Manage user details, permissions, and account status.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2 text-sm font-semibold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors">Cancel</button>
+<button class="px-4 py-2 text-sm font-semibold text-white bg-primary rounded-lg shadow-sm hover:bg-primary/90 transition-colors disabled:bg-primary/50 disabled:cursor-not-allowed" disabled="">Save Changes</button>
+</div>
+</div>
+<!-- Main Layout Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left Column: User Profile -->
+<div class="lg:col-span-1">
+<div class="bg-white dark:bg-[#18232e] border border-gray-200 dark:border-gray-700 rounded-xl p-6 flex flex-col items-center text-center">
+<div class="relative mb-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-32" data-alt="User avatar for Jane Doe" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCsjayhedL3n5cwlFG3DXBmVE3xPlR6wmhqaO7E1FdAT8G4njFgIylpKutVwnJD4yjx84y605IfJDLIY1AInCm7O5aKLU113gmfsmpC9c0Z9h-x-CIdbMm2kVjFirOKpWHZ3Zy10tOc_-MJ_285VqFHiGiIo1tGOQT9wTCNylyFc-hU7i-BthCm0oBaiNY7nKWb1LemcGCb-sZd1dkZWn0xciiHtpkpyu8MvwwIko90orQM4Ep6I7H8ijXHhNLpKJSy6MTj4Kculw");'></div>
+<span class="absolute bottom-2 right-2 flex h-5 w-5 items-center justify-center rounded-full bg-success ring-4 ring-white dark:ring-[#18232e]">
+<span class="relative flex h-2 w-2 rounded-full bg-white"></span>
+</span>
+</div>
+<p class="text-gray-900 dark:text-white text-xl font-bold leading-tight">Jane Doe</p>
+<p class="text-gray-500 dark:text-gray-400 text-base font-normal leading-normal mb-4">@janedoe</p>
+<span class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-success/20 text-success">Active</span>
+<div class="w-full mt-6 text-left">
+<div class="grid grid-cols-[auto_1fr] gap-x-4 border-t border-gray-200 dark:border-gray-700 py-4">
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal">Date Joined</p>
+<p class="text-gray-900 dark:text-white text-sm font-medium text-right">Jan 15, 2023</p>
+</div>
+<div class="grid grid-cols-[auto_1fr] gap-x-4 border-t border-gray-200 dark:border-gray-700 py-4">
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal">Last Login</p>
+<p class="text-gray-900 dark:text-white text-sm font-medium text-right">Aug 21, 2024, 10:30 AM</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Edit Forms -->
+<div class="lg:col-span-2 flex flex-col gap-8">
+<!-- Account Details Card -->
+<div class="bg-white dark:bg-[#18232e] border border-gray-200 dark:border-gray-700 rounded-xl">
+<div class="p-6 border-b border-gray-200 dark:border-gray-700">
+<h3 class="text-lg font-semibold text-gray-900 dark:text-white">Account Details</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Update user's personal information and supervisor.</p>
+</div>
+<form class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5" for="first-name">First Name</label>
+<input class="w-full rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-primary focus:border-primary" id="first-name" type="text" value="Jane"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5" for="last-name">Last Name</label>
+<input class="w-full rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-primary focus:border-primary" id="last-name" type="text" value="Doe"/>
+</div>
+<div class="md:col-span-2">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5" for="email">Email Address</label>
+<input class="w-full rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-primary focus:border-primary" id="email" type="email" value="jane.doe@example.com"/>
+</div>
+<div class="md:col-span-2">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5" for="supervisor">Supervisor</label>
+<select class="w-full rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-primary focus:border-primary" id="supervisor">
+<option>John Smith</option>
+<option selected="">Sarah Connor</option>
+<option>Michael Scott</option>
+</select>
+</div>
+</form>
+</div>
+<!-- Permissions & Security Card -->
+<div class="bg-white dark:bg-[#18232e] border border-gray-200 dark:border-gray-700 rounded-xl">
+<div class="p-6 border-b border-gray-200 dark:border-gray-700">
+<h3 class="text-lg font-semibold text-gray-900 dark:text-white">Permissions &amp; Security</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Manage user roles and password.</p>
+</div>
+<div class="p-6">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Roles</label>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6">
+<div class="flex items-center gap-2">
+<input checked="" class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary" id="role-admin" type="checkbox"/>
+<label class="text-sm text-gray-800 dark:text-gray-200" for="role-admin">Admin</label>
+</div>
+<div class="flex items-center gap-2">
+<input class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary" id="role-editor" type="checkbox"/>
+<label class="text-sm text-gray-800 dark:text-gray-200" for="role-editor">Editor</label>
+</div>
+<div class="flex items-center gap-2">
+<input checked="" class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary" id="role-viewer" type="checkbox"/>
+<label class="text-sm text-gray-800 dark:text-gray-200" for="role-viewer">Viewer</label>
+</div>
+</div>
+<button class="px-4 py-2 text-sm font-semibold text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 18px;">lock_reset</span>
+                                        Reset Password
+                                    </span>
+</button>
+</div>
+</div>
+<!-- Danger Zone Card -->
+<div class="bg-white dark:bg-[#18232e] border border-danger/50 dark:border-danger/50 rounded-xl">
+<div class="p-6">
+<h3 class="text-lg font-semibold text-danger">Danger Zone</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-1">These actions are permanent and cannot be undone.</p>
+<div class="mt-4">
+<button class="px-4 py-2 text-sm font-semibold text-white bg-danger rounded-lg shadow-sm hover:bg-danger/90 transition-colors">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 18px;">person_off</span>
+                                            Deactivate Account
+                                        </span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
